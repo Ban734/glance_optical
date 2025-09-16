@@ -74,4 +74,4 @@
 <?php endif; ?>
 
 </body>
-</html>
+</htm
