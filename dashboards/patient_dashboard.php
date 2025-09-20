@@ -2,7 +2,7 @@
 session_start();
 include '../engines/db.php';
 
-if (!isset($_SESSION['username']) || !in_array($_SESSION['role'], ['staff', 'admin'])) {
+if (!isset($_SESSION['username']) || !in_array($_SESSION['role'], ['doctor', 'admin'])) {
     header("Location: ../login.html");
     exit();
 }
