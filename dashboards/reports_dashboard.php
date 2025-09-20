@@ -38,6 +38,8 @@ $cardResult = mysqli_query($conn, $cardQuery);
     <meta charset="UTF-8">
     <title>Reports Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/reports.css">
+
 </head>
 <body class="bg-light">
 

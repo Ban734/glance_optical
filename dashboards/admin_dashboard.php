@@ -11,31 +11,34 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 
 <head>
   <meta charset="UTF-8">
-  <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <title>Create Staff</title>
+  <link rel="stylesheet" href="../css/admin.css">
 </head>
 
 <body>
-  <h1>Welcome, <?php echo $_SESSION['username']; ?> (Admin)</h1>
-  <a href="../functions/logout.php">Logout</a>
+  <div class="container">
+    <div class="card">
+      <h1>Welcome, <?php echo $_SESSION['username']; ?> (Admin)</h1>
+      <a href="../functions/logout.php" class="logout-btn">Logout</a>
 
-  <h2>Create New User Account</h2>
-  <form action="../modules/create_staff.php" method="POST">
-    <label>Username</label><br>
-    <input type="text" name="username" required><br>
-    
-    <label>Password</label><br>
-    <input type="password" name="password" required><br>
-    
-    <label>Role</label><br>
-    <select name="role" required>
-      <option value="staff">staff</option>
-      <option value="doctor">doctor</option>
-      <option value="admin">admin</option>
-    </select><br><br>
-    
-    <button type="submit">Create Account</button>
-  </form>
+      <h2>Create New User Account</h2>
+      <form action="../modules/create_staff.php" method="POST">
+        <label>Username</label>
+        <input type="text" name="username" required>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <label>Role</label>
+        <select name="role" required>
+          <option value="staff">staff</option>
+          <option value="doctor">doctor</option>
+          <option value="admin">admin</option>
+        </select>
+
+        <button type="submit" class="submit-btn">Create Account</button>
+      </form>
+    </div>
+  </div>
 </body>
-
 </html>
