@@ -1,5 +1,7 @@
 <?php
 session_start();
+include("../dashboards/dock.php");
+
 if (!isset($_SESSION['role'])) {
     header("Location: ../index.html");
     exit();
@@ -39,18 +41,11 @@ $cardResult = mysqli_query($conn, $cardQuery);
     <title>Reports Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/reports.css">
-
+    <link rel="stylesheet" href="../css/dock.css">
 </head>
-<body class="bg-light">
+<body>
 
 <div class="container mt-4">
-
-
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1 class="fw-bold">📑 Reports Center</h1>
-        <a href="master_dashboard.php" class="btn btn-secondary">⬅ Back to Dashboard</a>
-    </div>
-    <p class="text-muted">Glance Optical Record Booklet</p>
 
     <ul class="nav nav-tabs" id="reportTabs" role="tablist">
         <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#overview">Overview</a></li>

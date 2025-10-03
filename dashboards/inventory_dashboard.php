@@ -1,5 +1,7 @@
 <?php
 session_start();
+include("../dashboards/dock.php");
+
 if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['staff', 'admin'])) {
     header("Location: login.html");
     exit();
@@ -13,6 +15,7 @@ if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['staff', 'admin']
     <title>Inventory Dashboard</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/dock.css">
     <link rel="stylesheet" href="css/staff.css">
 
 </head>
@@ -64,15 +67,6 @@ if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['staff', 'admin']
     <?php endif; ?>
 <?php endif; ?>
 
-<div class="d-flex justify-content-between mb-3">
-    <a href="../dashboards/master_dashboard.php" class="btn btn-secondary">
-        ⬅ Back to Main Dashboard
-    </a>
-
-    <a href="../functions/logout.php" class="btn btn-danger">
-        🚪 Logout
-    </a>
-</div>
 
   <div class="card p-4 shadow">
     <h4>Inventory Management</h4>

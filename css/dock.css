@@ -1,0 +1,82 @@
+:root {
+  --brown: #6E412A;
+  --deep: #31160B;
+  --cream: #f4f1ea;
+  --light-bg: #eae2d0;
+}
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', Arial, sans-serif;
+  background: var(--light-bg);
+  color: var(--deep);
+}
+
+/* 🔹 Dock Navbar */
+.custom-dock {
+  background-color: var(--brown);
+  margin-top: 30px;           /* spacing from logo */
+  padding: 8px 20px;          /* consistent padding */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.custom-dock .navbar-brand,
+.custom-dock .nav-link,
+.custom-dock .navbar-text {
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.custom-dock .nav-link {
+  margin-right: 40px;
+  transition: color 0.2s ease;
+}
+
+.custom-dock .nav-link:hover {
+  color: #e4dbca !important;
+  text-decoration: underline;
+}
+
+/* 🔹 Admin | Logout text */
+.custom-dock .navbar-text {
+  font-size: 16px !important;  /* ← Adjust size here (default: 14px, make it bigger or smaller) */
+  font-weight: bold;           /* controls weight of "Admin |" part */
+}
+
+.logout-link {
+  font-size: 16px !important;  /* ← Match size with Admin text */
+  color: #fff !important;      /* force it to be white */
+  font-weight: 600;            /* thickness of Logout */
+  text-decoration: none;
+}
+
+.logout-link:hover {
+  color: #e4dbca !important;   /* same hover color as nav links */
+  text-decoration: underline;
+}
+
+.custom-dock .btn-light {
+  background-color: var(--cream);
+  color: var(--deep);
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+/* 🔹 Logo above navbar */
+.dock-logo {
+  text-align: left;
+  margin-left: 20px; 
+  margin-top: 15px;
+  margin-bottom: -10px;   /* adjust spacing before navbar */
+}
+
+.dock-logo img {
+  height: 45px;           /* consistent logo size */
+  width: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.dock-logo img:hover {
+  transform: scale(1.08);
+}

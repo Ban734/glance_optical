@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['username'] = $user['username'];
             $_SESSION['role'] = $user['role'];
 
-            header("Location: ../dashboards/master_dashboard.php");
+            header("Location: ../dashboards/home.php");
             exit();
         } else {
             header("Location: ../index.php?error=1"); // ✅ fixed

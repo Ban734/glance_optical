@@ -43,6 +43,7 @@ div.loginContainer input {
   opacity: 70%;
 }
 
+/* 🔹 Login Button */
 div.loginContainer button[type="submit"] {
   display: block;
   width: 100%;
@@ -56,12 +57,21 @@ div.loginContainer button[type="submit"] {
   color: #31160B;
   box-shadow: 6px 9px 9px 3px rgba(0, 0, 0, 0.6);
   transition: background 0.2s ease;
+  border: none;
+}
+
+/* 🔹 Remove Bootstrap blue glow */
+div.loginContainer button[type="submit"]:focus,
+div.loginContainer button[type="submit"]:active {
+  outline: none !important;
+  box-shadow: 6px 9px 9px 3px rgba(0, 0, 0, 0.6) !important;
 }
 
 div.loginContainer button[type="submit"]:hover {
   background-color: #d3c7b3;
 }
 
+/* 🔹 Toggle Password Button */
 #togglePassword {
   border: none;
   background: #e4dbca;
@@ -69,11 +79,17 @@ div.loginContainer button[type="submit"]:hover {
   box-shadow: 4px 7px 15px 1px rgba(0, 0, 0, 0.6);
   width: 60px;
   height: 60px;
-  border-top: 10px;
   margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* 🔹 Remove blue outline for toggle button too */
+#togglePassword:focus,
+#togglePassword:active {
+  outline: none !important;
+  box-shadow: 4px 7px 15px 1px rgba(0, 0, 0, 0.6) !important;
 }
 
 #togglePassword i {
@@ -82,8 +98,9 @@ div.loginContainer button[type="submit"]:hover {
 }
   
 .logo-img {
-  right: 100px;
-  width: 300px;
-  margin-right: 120px;
+  right: 1px;
+  width: 400px;
+  margin-right: 60px;
   margin-bottom: 1px;
+  margin-left: 5px;
 }
