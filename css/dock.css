@@ -40,13 +40,13 @@ body {
 /* 🔹 Admin | Logout text */
 .custom-dock .navbar-text {
   font-size: 16px !important;  /* ← Adjust size here (default: 14px, make it bigger or smaller) */
-  font-weight: bold;           /* controls weight of "Admin |" part */
+  font-weight: lighter;           /* controls weight of "Admin |" part */
 }
 
 .logout-link {
   font-size: 16px !important;  /* ← Match size with Admin text */
   color: #fff !important;      /* force it to be white */
-  font-weight: 600;            /* thickness of Logout */
+  font-weight: lighter;            /* thickness of Logout */
   text-decoration: none;
 }
 

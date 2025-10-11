@@ -20,6 +20,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['username'] = $user['username'];
             $_SESSION['role'] = $user['role'];
 
+            $log_action = "User Login";
+    $log_stmt = $conn->prepare("INSERT INTO audit_logs (username, role, action) VALUES (?, ?, ?)");
+    $log_stmt->bind_param("sss", $_SESSION['username'], $_SESSION['role'], $log_action);
+    $log_stmt->execute();
+
             header("Location: ../dashboards/home.php");
             exit();
         } else {

@@ -1,4 +1,24 @@
+/* Background */
 body {
-    background-color: #6E412A; /*background color ni staff dashboard*/
-    margin: 0;
+  background-color: #6E412A;
+  margin: 0;
+}
+
+/* Discount Styling */
+.discount-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.discount-select,
+.custom-discount-input {
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+}
+
+.discount-select:focus,
+.custom-discount-input:focus {
+  box-shadow: 0 0 0 0.15rem rgba(25, 135, 84, 0.25);
 }

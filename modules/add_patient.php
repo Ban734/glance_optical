@@ -2,8 +2,8 @@
 session_start();
 include '../engines/db.php';
 
-if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'doctor') {
-    header("Location: ../login.html");
+if (!isset($_SESSION['username']) || !in_array($_SESSION['role'], ['doctor', 'admin'])) {
+    header("Location: login.html");
     exit();
 }
 
@@ -29,8 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Add Patient - Glance Optical</title>
-    <link rel="stylesheet" href="../css/clinic.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/clinic.css">
+    <link rel="stylesheet" href="../css/dock.css" >
 </head>
 <body class="NavBar">
 

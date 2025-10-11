@@ -5,6 +5,7 @@
   --light-bg: #eae2d0;
 }
 
+/* Only apply these to Admin Dashboard content */
 body {
   margin: 0;
   font-family: 'DM Sans', Arial, sans-serif;
@@ -12,28 +13,7 @@ body {
   color: var(--deep);
 }
 
-/* Top header (logo + user info) */
-.top-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 40px;
-  background: var(--cream);
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.top-header a {
-  color: var(--brown);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.top-header a:hover {
-  text-decoration: underline;
-}
-
-/* Main content */
+/* Main content area */
 .content {
   max-width: 700px;
   margin: 40px auto;
@@ -88,4 +68,68 @@ input, select {
 
 .submit-btn:hover {
   background: #52301f;
+}
+
+/* =====================
+   SIDE PANE STYLES (UPDATED)
+   - .open is the single open-state class used by JS
+   - pane z-index is higher than the toggle button so it covers it
+   - toggle button is fixed so it does not shift with content
+===================== */
+
+/* Pane toggle button (fixed so it stays in viewport).
+   Adjust `top` to sit below your dock navbar height. */
+/* 🔹 Menu button (scrolls with page) */
+.pane-toggle {
+  position: absolute;          /* stays inside the page flow */
+  top: 150px;                  /* adjust if needed */
+  left: 30px;
+  background: var(--brown);
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 10;                 /* sits above content but scrolls */
+}
+
+/* 🔹 Side pane (scrolls with page) */
+.side-pane {
+  position: absolute;          /* not fixed, scrolls normally */
+  top: 136px;                  /* same offset as button */
+  left: -260px;                /* start hidden */
+  width: 260px;
+  min-height: 400px;           /* give it some height */
+  background: var(--brown);
+  color: #fff;
+  padding: 20px;
+  box-shadow: 4px 0 8px rgba(0,0,0,0.3);
+  transition: left 0.3s ease;
+  z-index: 1200;                  /* under the button */
+}
+
+/* When open */
+.side-pane.open {
+  left: 0;
+}
+
+/* Pane content */
+.side-pane h3 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  border-bottom: 1px solid #aaa;
+  padding-bottom: 10px;
+}
+
+.side-pane a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin: 12px 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.side-pane a:hover {
+  text-decoration: underline;
 }

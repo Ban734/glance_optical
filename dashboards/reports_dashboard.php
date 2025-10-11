@@ -38,7 +38,7 @@ $cardResult = mysqli_query($conn, $cardQuery);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Reports Dashboard</title>
+    <title>Reports Dashboard | Glance Optical</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/reports.css">
     <link rel="stylesheet" href="../css/dock.css">

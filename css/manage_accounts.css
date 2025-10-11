@@ -1,0 +1,319 @@
+:root {
+  --brown: #6E412A;
+  --deep: #31160B;
+  --cream: #f4f1ea;
+  --light-bg: #eae2d0;
+}
+
+body {
+  background: var(--light-bg);
+  font-family: 'DM Sans', Arial, sans-serif;
+  margin: 0;
+}
+
+.content {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+h2 {
+  color: var(--brown);
+  margin-bottom: 25px;
+}
+
+/* 🔹 Account Cards Grid */
+.accounts-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.account-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 3px 6px 12px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.account-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 4px 8px 14px rgba(0,0,0,0.25);
+}
+
+.account-card h3 {
+  color: var(--brown);
+  margin-bottom: 10px;
+}
+
+/* 🔹 Modal Overlay */
+.custom-modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-modal-bg.visible {
+  opacity: 1 !important;
+  pointer-events: all;
+}
+
+/* 🔹 Modal Box */
+.custom-modal {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  width: 400px;
+  max-width: 90%;
+  transform: scale(0.9);
+  animation: fadeIn 0.3s ease forwards;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  position: relative;
+  visibility: visible !important;
+}
+
+@keyframes fadeIn {
+  to {
+    transform: scale(1);
+  }
+}
+
+/* 🔹 Close Button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--deep);
+}
+
+.custom-modal h3 {
+  color: var(--brown);
+  margin-bottom: 15px;
+}
+
+.custom-modal p {
+  margin: 8px 0;
+  color: var(--deep);
+}
+
+.custom-modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* 🔹 Buttons */
+.update-btn,
+.delete-btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.update-btn {
+  background: var(--brown);
+  color: #fff;
+}
+
+.update-btn:hover {
+  background: #4b2715;
+}
+
+.delete-btn {
+  background: #b33a3a;
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background: #8c2a2a;
+}
+
+/* =====================
+   SIDE PANE STYLES (UPDATED)
+   - .open is the single open-state class used by JS
+   - pane z-index is higher than the toggle button so it covers it
+   - toggle button is fixed so it does not shift with content
+===================== */
+
+/* Pane toggle button (fixed so it stays in viewport).
+   Adjust `top` to sit below your dock navbar height. */
+/* 🔹 Menu button (scrolls with page) */
+.pane-toggle {
+  position: absolute;          /* stays inside the page flow */
+  top: 150px;                  /* adjust if needed */
+  left: 30px;
+  background: var(--brown);
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 10;                 /* sits above content but scrolls */
+}
+
+/* 🔹 Side pane (scrolls with page) */
+.side-pane {
+  position: absolute;          /* not fixed, scrolls normally */
+  top: 136px;                  /* same offset as button */
+  left: -260px;                /* start hidden */
+  width: 260px;
+  min-height: 400px;           /* give it some height */
+  background: var(--brown);
+  color: #fff;
+  padding: 20px;
+  box-shadow: 4px 0 8px rgba(0,0,0,0.3);
+  transition: left 0.3s ease;
+  z-index: 0;                  /* under the button */
+}
+
+/* When open */
+.side-pane.open {
+  left: 0;
+  z-index: 1200; /* bring it to front only when open */
+}
+
+/* Pane content */
+.side-pane h3 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  border-bottom: 1px solid #aaa;
+  padding-bottom: 10px;
+}
+
+.side-pane a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin: 12px 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.side-pane a:hover {
+  text-decoration: underline;
+}
+
+
+
+/* =========================
+   UPDATE ACCOUNT FORM STYLES
+   ========================= */
+.content {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.content h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+form label {
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 3px;
+}
+
+form input,
+form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+}
+
+form input:focus,
+form select:focus {
+  outline: none;
+  border-color: #3a86ff;
+  box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
+}
+
+.submit-btn {
+  background: #3a86ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background: #2f6dd9;
+}
+
+.cancel-btn {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  background: #ccc;
+  color: #333;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 14px;
+  margin-top: 10px;
+  transition: background 0.3s ease;
+}
+
+.cancel-btn:hover {
+  background: #aaa;
+}
+
+/* Message styling (optional if we add ?msg=updated etc.) */
+.msg {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+/* Fade-out animation for messages */
+@keyframes fadeOut {
+  0% { opacity: 1; transform: translateY(0); }
+  80% { opacity: 0.2; transform: translateY(-5px); }
+  100% { opacity: 0; display: none; }
+}
+
+.msg.updated {
+  background-color: #d1e7dd;
+  color: #0f5132;
+}
+
+.msg.deleted {
+  background-color: #f8d7da;
+  color: #842029;
+}
