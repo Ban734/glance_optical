@@ -18,6 +18,7 @@ if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['staff', 'admin']
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/dock.css">
     <link rel="stylesheet" href="css/staff.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -216,7 +217,6 @@ function computeAndRender() {
     const original = +(basePrice * qty);
     let total = original;
     if (discount > 0) total = +(original - (original * (discount / 100)));
-    // normalize to 2 decimals
     const originalFixed = original ? original.toFixed(2) : '0.00';
     const totalFixed = total ? total.toFixed(2) : '0.00';
     displayTotal.value = totalFixed;
@@ -265,7 +265,6 @@ paymentMethod.addEventListener("change", function() {
     cardTypeGroup.hidden = !isCard;
     paymentStatusGroup.hidden = !isCard;
 
-    // If not card, auto set status to Paid (front-end)
     if (!isCard) {
         document.getElementById("paymentStatus").value = "Paid";
     } else {
@@ -273,41 +272,60 @@ paymentMethod.addEventListener("change", function() {
     }
 });
 
-// Card number: digits only; limit 16; no helper text
+// Card number: digits only; limit 16
 cardNumber.addEventListener("input", function() {
     this.value = this.value.replace(/\D/g, "");
     if (this.value.length > 16) this.value = this.value.slice(0, 16);
 });
 
-// Ensure hidden fields and discount sent before submit
+// ✅ SweetAlert validation on submit
 document.getElementById("saleForm").addEventListener("submit", function(e) {
-    computeAndRender(); // populate hidden fields
-    // ensure discount value is set into hiddenDiscount
+    computeAndRender();
     hiddenDiscount.value = getDiscountValue().toFixed(2);
 
     const method = paymentMethod.value;
+    const len = cardNumber.value.length;
+
     if (method === "Card") {
-        const len = cardNumber.value.length;
         if (len < 12 || len > 16) {
-            alert("Card number must be between 12 to 16 digits.");
             e.preventDefault();
+            Swal.fire({
+                icon: "warning",
+                title: "Invalid Card Number",
+                text: "Card number must be between 12 to 16 digits only.",
+                confirmButtonColor: "#3085d6"
+            }).then(() => {
+                cardNumber.focus();
+            });
             return;
         }
         if (!cardNumber.value || !document.getElementById('cardType').value) {
-            alert("Card number and card type are required for card payments.");
             e.preventDefault();
+            Swal.fire({
+                icon: "warning",
+                title: "Missing Card Details",
+                text: "Card number and card type are required for card payments.",
+                confirmButtonColor: "#3085d6"
+            }).then(() => {
+                cardNumber.focus();
+            });
             return;
         }
     }
 
-    // validate discount numeric range
     const disc = parseFloat(hiddenDiscount.value || '0');
     if (isNaN(disc) || disc < 0 || disc > 100) {
-        alert("Discount must be between 0 and 100.");
         e.preventDefault();
+        Swal.fire({
+            icon: "warning",
+            title: "Invalid Discount",
+            text: "Discount must be between 0 and 100 percent.",
+            confirmButtonColor: "#3085d6"
+        });
         return;
     }
 });
 </script>
+
 </body>
 </html>
