@@ -13,7 +13,7 @@
 
 <body class="d-flex justify-content-center align-items-center vh-100">
   
-  <img src="images/logo.png.png" alt="Glance Logo" class="logo-img"> 
+  <img src="images/light.png.png" alt="Glance Logo" class="logo-img"> 
 
   <div class="wrapper">
     <div class="loginContainer">
@@ -37,17 +37,30 @@
     </div>
   </div>
 
+  <!-- 🔴 Incorrect Login Modal -->
   <div class="modal fade" id="errorModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content text-center p-4">
-        <h5 class="text-danger">Incorrect Login</h5>
+        <h5 class="text-danger fw-bold">Incorrect Login</h5>
         <p>Username or Password is incorrect. Please try again.</p>
         <button type="button" class="btn btn-danger w-50 mx-auto" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 
+  <!-- 🟡 User Already Logged In Modal -->
+  <div class="modal fade" id="userExistsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-center p-4">
+        <h5 class="text-warning fw-bold">User Already Logged In</h5>
+        <p>This account is already active on another device or session.</p>
+        <button type="button" class="btn btn-warning w-50 mx-auto" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // 👁️ Toggle password visibility
     document.getElementById("togglePassword").addEventListener("click", function () {
       let passwordField = document.getElementById("password");
       let icon = this.querySelector("i");
@@ -64,14 +77,22 @@
     });
   </script>
 
+  <!-- 🔹 Error Handling for Modals -->
   <?php if (isset($_GET['error']) && $_GET['error'] == 1): ?>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      let errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
-      errorModal.show();
-    });
-  </script>
-<?php endif; ?>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        let errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+        errorModal.show();
+      });
+    </script>
+  <?php elseif (isset($_GET['error']) && $_GET['error'] == 2): ?>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        let existsModal = new bootstrap.Modal(document.getElementById('userExistsModal'));
+        existsModal.show();
+      });
+    </script>
+  <?php endif; ?>
 
 </body>
 </html>

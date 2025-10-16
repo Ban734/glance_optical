@@ -3,6 +3,7 @@
   --deep: #31160B;
   --cream: #f4f1ea;
   --light-bg: #eae2d0;
+  --paper: #fffdf8;
 }
 
 body {
@@ -12,88 +13,51 @@ body {
   margin: 0;
 }
 
+/* Booklet container */
 .container {
-  background: var(--cream);
+  background: linear-gradient(180deg, var(--cream) 0%, var(--paper) 100%);
   padding: 30px;
   border-radius: 20px;
-  box-shadow: 6px 9px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 6px 9px 15px rgba(0, 0, 0, 0.45);
 }
 
-h1 {
-  font-weight: 800;
-  color: var(--deep);
+/* Tabs / controls */
+.report-controls .form-control-sm,
+.report-controls .form-select {
+  border-radius: 8px;
 }
 
-p.text-muted {
-  color: var(--brown) !important;
-  font-style: italic;
+/* Add record button */
+.btn-success {
+  background: var(--deep);
+  border: none;
+}
+.btn-success:hover { background: #4b2715; }
+
+/* Download button */
+.btn-primary {
+  background: #2b6cb0;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.18);
 }
 
-/* Tabs */
-.nav-tabs .nav-link {
-  font-weight: bold;
-  color: var(--deep);
-  border-radius: 12px 12px 0 0;
-  margin-right: 5px;
-  background: var(--light);
-}
-.nav-tabs .nav-link.active {
-  background: var(--cream);
-  border: 2px solid var(--deep);
-  color: var(--deep);
-}
-
-/* Cards */
+/* Booklet-like card visuals */
 .card {
   border: none;
-  border-radius: 15px;
-  background: var(--light);
-  color: var(--deep);
-}
-.card h3 {
-  font-weight: bold;
-}
-.card p {
-  font-size: 1.4rem;
-}
-
-/* Accordions */
-.accordion-button {
-  background: var(--light);
-  color: var(--deep);
-  font-weight: bold;
-}
-.accordion-button:not(.collapsed) {
-  background: var(--brown);
-  color: var(--cream);
-}
-.accordion-body {
-  background: var(--cream);
-}
-
-/* Tables */
-.table {
-  background: var(--cream);
-}
-.table thead {
-  background: var(--brown) !important;
-  color: var(--cream);
-}
-.table-bordered td, 
-.table-bordered th {
-  border: 1px solid var(--brown);
-}
-
-/* Buttons */
-.btn-secondary {
-  background: var(--light);
-  color: var(--deep);
-  font-weight: bold;
-  border: none;
   border-radius: 12px;
-  padding: 8px 18px;
-  box-shadow: 3px 5px 8px rgba(0,0,0,0.3);
+  background: rgba(255,255,255,0.95);
 }
-.btn-secondary:hover {
-  background: #d3c7b3;
+
+.table thead {
+  background: var(--deep);
+  color: var(--cream);
 }
+
+.accordion-button {
+  background: rgba(0,0,0,0.03);
+  color: var(--deep);
+  font-weight: 700;
+}
+
+/* small helpers */
+.report-controls { gap: .5rem; }
