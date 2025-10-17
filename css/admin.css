@@ -22,7 +22,7 @@ body {
   padding: 60px 20px;
 }
 
-/* Card (main container) */
+/* Card */
 .card.create-card {
   background: linear-gradient(180deg, var(--cream) 0%, var(--paper) 100%);
   padding: 40px 35px;
@@ -189,7 +189,7 @@ small {
   text-decoration: underline;
 }
 
-/* Toast notification (modal-style) */
+
 .notification {
   position: fixed;
   top: 50%;

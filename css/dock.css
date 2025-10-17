@@ -66,8 +66,8 @@ body {
 .dock-logo {
   text-align: left;
   margin-left: 20px; 
-  margin-top: 28px;
-  margin-bottom: -7px;   /* adjust spacing before navbar */
+  margin-top: 20px;
+  margin-bottom: -15px;   /* adjust spacing before navbar */
 }
 
 .dock-logo img {
